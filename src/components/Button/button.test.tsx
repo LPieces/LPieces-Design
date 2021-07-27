@@ -24,7 +24,7 @@ describe('test Button component', () => {
     const element = wrapper.getByText('default-btn') as HTMLButtonElement;
     expect(element).toBeInTheDocument();
     expect(element.tagName).toEqual('BUTTON');
-    expect(element).toHaveClass('btn btn-default');
+    expect(element).toHaveClass('lpd-btn lpd-btn-default');
     expect(element.disabled).toBeFalsy();
     fireEvent.click(element); // 检查函数到底被调用没
     expect(defaultProps.onClick).toHaveBeenCalled();
@@ -35,7 +35,7 @@ describe('test Button component', () => {
     const wrapper = render(<Button {...testProps}>OK</Button>);
     const element = wrapper.getByText('OK');
     expect(element).toBeInTheDocument();
-    expect(element).toHaveClass('btn-primary btn-lg ccass');
+    expect(element).toHaveClass('lpd-btn-primary lpd-btn-lg ccass');
   });
 
   it('should render a link when btnType equals link and herf is provided', () => {
@@ -43,7 +43,7 @@ describe('test Button component', () => {
     const element = wrapper.getByText('Link');
     expect(element).toBeInTheDocument();
     expect(element.tagName).toEqual('A');
-    expect(element).toHaveClass('btn btn-link');
+    expect(element).toHaveClass('lpd-btn lpd-btn-link');
   });
 
   it('should render disabled button when disabled set to true', () => {

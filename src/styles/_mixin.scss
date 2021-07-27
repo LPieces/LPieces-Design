@@ -15,20 +15,20 @@
   color: $color;
   background: $background;
   border-color: $border;
-  &:hover{
+  &:hover {
     color: $hover-color;
     background: $hover-background;
     border-color: $hover-border;
   }
   &:focus,
-  &.focus{
+  &.focus {
     color: $hover-color;
     background: $hover-background;
     border-color: $hover-border;
     outline: 0;
   }
   &:disabled,
-  &.disabled{
+  &.disabled {
     color: $color;
     background: $background;
     border-color: $border;
