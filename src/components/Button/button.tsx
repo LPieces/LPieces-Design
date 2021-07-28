@@ -28,7 +28,7 @@ const { btnType, size, disabled, children, href, className, ...restProps } = pro
 
   if (btnType === 'link' && href) {
     return (
-      <a className={classes} href={href} {...restProps}>
+      <a className={classes} href={href}>
         {children}
       </a>
     );
@@ -43,7 +43,7 @@ const { btnType, size, disabled, children, href, className, ...restProps } = pro
 
 Button.defaultProps = {
   disabled: false,
-  btnType: 'default',
+  btnType: 'default'
 };
 
 export default Button;
