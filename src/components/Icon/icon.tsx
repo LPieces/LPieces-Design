@@ -1,13 +1,20 @@
 import React from 'react';
-import classnames from 'classnames';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import classNames from 'classnames';
+import { FontAwesomeIcon, FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
 
-type TypeProps = 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger' | 'light' | 'dark';
+type ThemeProps = 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger' | 'light' | 'dark';
 
-const Icon: React.FC = (): React.ReactElement => {
+interface IconProos extends FontAwesomeIconProps {
+    theme?: ThemeProps
+}
+
+const Icon: React.FC<IconProos> = (props): React.ReactElement => {
+    const { className, theme, ...restProps } = props;
+    const classes = classNames('lpd-icon', className, {
+        [`lpd-icon-${theme}`]: theme
+    })
     return (
-        <FontAwesomeIcon icon={faCoffee} />
+        <FontAwesomeIcon className={ classes } { ...restProps } />
     )
 }
 

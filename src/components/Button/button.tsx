@@ -1,5 +1,5 @@
 import React from 'react';
-import classnames from 'classnames';
+import classNames from 'classnames';
 
 type ButtonSize = 'lg' | 'sm'
 type ButtonType = 'primary' | 'default' | 'danger' | 'link'
@@ -20,7 +20,7 @@ type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>; // 联合
 const Button: React.FC<ButtonProps> = (props) => {
 const { btnType, size, disabled, children, href, className, ...restProps } = props;
 
-  const classes = classnames('lpd-btn', className, {
+  const classes = classNames('lpd-btn', className, {
     [`lpd-btn-${btnType}`]: btnType,
     [`lpd-btn-${size}`]: size,
     disabled: btnType === 'link' && disabled,
