@@ -1,8 +1,11 @@
-import React from 'react';
-import classNames from 'classnames';
-import { FontAwesomeIcon, FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
+import React from 'react'
+import classNames from 'classnames'
+import { FontAwesomeIcon, FontAwesomeIconProps } from '@fortawesome/react-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+library.add(fas);
 
-type ThemeProps = 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger' | 'light' | 'dark';
+type ThemeProps = 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger' | 'light' | 'dark'
 
 interface IconProos extends FontAwesomeIconProps {
     theme?: ThemeProps
@@ -18,4 +21,4 @@ const Icon: React.FC<IconProos> = (props): React.ReactElement => {
     )
 }
 
-export default Icon;
+export default Icon

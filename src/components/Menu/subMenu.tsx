@@ -2,6 +2,8 @@ import React, { useContext, useState, FunctionComponentElement } from "react"
 import classNames from "classnames"
 import { MenuContext } from "./menu"
 import { MenuItemProps } from "./menuItem"
+import Icon from "../Icon/icon"
+import Transition from '../Transition/transition'
 
 export interface SubMenuProps {
   index?: string;
@@ -14,8 +16,10 @@ const SubMenu: React.FC<SubMenuProps> = ({index, title, children, className}) =>
   const openedSubMenus = context.defaultOpenSubMenus as Array<string>
   const isOpend = (index && context.mode === 'vertical') ? openedSubMenus.includes(index) : false
   const [ menuOpen, setOpen ] = useState(isOpend)
-  const classes = classNames('menu-item submenu-item', className, {
-    'is-active': context.index === index
+  const classes = classNames('lpd-menu-item lpd-submenu-item', className, {
+    'is-active': context.index === index,
+    'is-opened': menuOpen,
+    'is-vertical': context.mode === 'vertical'
   })
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault()
@@ -37,8 +41,8 @@ const SubMenu: React.FC<SubMenuProps> = ({index, title, children, className}) =>
     onMouseLeave: (e: React.MouseEvent) => {handleMouse(e, false)}
   } : {}
   const renderChildren = () => {
-    const subMenuClasses = classNames('menu-submenu', {
-      'menu-opened': menuOpen
+    const subMenuClasses = classNames('lpd-menu-submenu', {
+      'lpd-menu-opened': menuOpen
     })
     const childrenComponent = React.Children.map(children, (child, i) => {
       const childElement = child as FunctionComponentElement<MenuItemProps>
@@ -47,19 +51,22 @@ const SubMenu: React.FC<SubMenuProps> = ({index, title, children, className}) =>
           index: `${index}-${i}`
         })
       } else {
-        console.error("Warning: SubMenu has a child which is not a MenuItem component")
+        console.error("Warning: SubMenu has a child which is not a MenuItem component");
       }
     })
     return(
-      <ul className={subMenuClasses}>
-        {childrenComponent}
-      </ul>
+      <Transition in={menuOpen} timeout={300} animation="lpd-zoom-in-right">
+        <ul className={subMenuClasses}>
+          {childrenComponent}
+        </ul>
+      </Transition>
     )
   }
   return(
     <li key={index} className={classes} {...hoverEvents}>
-      <div className="submenu-title" {...clickEvents}>
+      <div className="lpd-submenu-title" {...clickEvents}>
         {title}
+        <Icon icon="angle-down" className="arrow-icon" />
       </div>
       {renderChildren()}
     </li>
