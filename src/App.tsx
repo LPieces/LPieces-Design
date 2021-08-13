@@ -4,6 +4,7 @@ import Icon from './components/Icon/icon';
 import Menu from './components/Menu/menu';
 import MenuItem from './components/Menu/menuItem';
 import SubMenu from './components/Menu/subMenu';
+import Input from './components/Input/input';
 
 const App: React.FC = (): React.ReactElement => {
   return (
@@ -33,6 +34,9 @@ const App: React.FC = (): React.ReactElement => {
           <MenuItem>3</MenuItem>
         </SubMenu>  
       </Menu>
+      <div style={{ width:'500px', padding: '20px' }}>
+      <Input placeholder="请输入" />
+      </div>
     </div>
   );
 }
