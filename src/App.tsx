@@ -12,7 +12,7 @@ const App: React.FC = (): React.ReactElement => {
       <Icon color="#989898" icon="user" size="1x" />
       <Icon icon="user" theme="primary" size="2x" />
       <Button btnType="link" href="https://www.baidu.com" target="_blank">按钮</Button>
-      <Button size="sm" disabled={ true } btnType="link" href="https://www.baidu.com" target="_blank">按钮</Button>
+      <Button size="sm" disabled={true} btnType="link" href="https://www.baidu.com" target="_blank">按钮</Button>
       <Button btnType="primary" size="lg">确定</Button>
       <Menu mode="horizontal" defaultIndex="0">
         <MenuItem index="0">123</MenuItem>
@@ -32,10 +32,10 @@ const App: React.FC = (): React.ReactElement => {
           <MenuItem>1</MenuItem>
           <MenuItem>2</MenuItem>
           <MenuItem>3</MenuItem>
-        </SubMenu>  
+        </SubMenu>
       </Menu>
-      <div style={{ width:'500px', padding: '20px' }}>
-      <Input placeholder="请输入" />
+      <div style={{ width: '500px', padding: '20px' }}>
+        <Input placeholder="请输入" />
       </div>
     </div>
   );

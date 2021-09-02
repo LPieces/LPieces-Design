@@ -15,7 +15,7 @@ const testVerProps: MenuProps = {
 }
 
 const generateMenu = (props: MenuProps) => {
-  return(
+  return (
     <Menu {...props}>
       <MenuItem>active</MenuItem>
       <MenuItem disabled>disabled</MenuItem>
@@ -23,8 +23,8 @@ const generateMenu = (props: MenuProps) => {
     </Menu>
   )
 }
-let wrapper: RenderResult, menuElement: HTMLElement, 
-    activeElement: HTMLElement, disabledElement: HTMLElement;
+let wrapper: RenderResult, menuElement: HTMLElement,
+  activeElement: HTMLElement, disabledElement: HTMLElement;
 describe('test Menu and MenuItem component', () => {
   beforeEach(() => {
     wrapper = render(generateMenu(testProps));
@@ -34,25 +34,25 @@ describe('test Menu and MenuItem component', () => {
   })
   it('should render correct Menu and MenuItem based on default props', () => {
     expect(menuElement).toBeInTheDocument();
-    expect(menuElement).toHaveClass('menu test');
+    expect(menuElement).toHaveClass('lpd-menu test');
     expect(menuElement.getElementsByTagName('li').length).toEqual(3);
-    expect(activeElement).toHaveClass('menu-item is-active');
-    expect(disabledElement).toHaveClass('menu-item is-disabled');
+    expect(activeElement).toHaveClass('lpd-menu-item is-active');
+    expect(disabledElement).toHaveClass('lpd-menu-item is-disabled');
   })
   it('click items should change active and call the right callback', () => {
     const thirdItem = wrapper.getByText('lpieces');
     fireEvent.click(thirdItem);
     expect(thirdItem).toHaveClass('is-active');
     expect(activeElement).not.toHaveClass('is-active');
-    expect(testProps.onSelect).toHaveBeenCalledWith(2);
+    expect(testProps.onSelect).toHaveBeenCalledWith('2');
     fireEvent.click(disabledElement);
     expect(disabledElement).not.toHaveClass('is-active');
-    expect(testProps.onSelect).not.toHaveBeenCalledWith(1);
+    expect(testProps.onSelect).not.toHaveBeenCalledWith('1');
   })
   it('should render vertical mode when mode is set to vertical', () => {
     cleanup();
     const wrapper = render(generateMenu(testVerProps));
     const menuElement = wrapper.getByTestId('test-menu');
-    expect(menuElement).toHaveClass('menu-vertical');
+    expect(menuElement).toHaveClass('lpd-menu-vertical');
   })
 })
