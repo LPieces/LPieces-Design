@@ -18,7 +18,7 @@ type AnchorButtonProps = BaseButtonProps & React.AnchorHTMLAttributes<HTMLElemen
 export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>; // 联合
 
 const Button: React.FC<ButtonProps> = (props) => {
-const { btnType, size, disabled, children, href, className, ...restProps } = props;
+  const { btnType, size, disabled, children, href, className, ...restProps } = props;
 
   const classes = classNames('lpd-btn', className, {
     [`lpd-btn-${btnType}`]: btnType,
@@ -26,7 +26,7 @@ const { btnType, size, disabled, children, href, className, ...restProps } = pro
     disabled: btnType === 'link' && disabled,
   });
 
-  if (btnType === 'link' && href) {
+  if (btnType === 'link') {
     return (
       <a className={classes} href={href}>
         {children}

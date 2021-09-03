@@ -30,7 +30,7 @@ var Button = function (props) {
         _a["lpd-btn-" + size] = size,
         _a.disabled = btnType === 'link' && disabled,
         _a));
-    if (btnType === 'link' && href) {
+    if (btnType === 'link') {
         return (React.createElement("a", { className: classes, href: href }, children));
     }
     else {
